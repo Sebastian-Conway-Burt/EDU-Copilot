@@ -41,3 +41,52 @@ body {
 .border-dashed {
     border: 2px dashed #ccc; /* Example style */
 }
+/* Chat Window Styling */
+#chat-window {
+    height: 400px; /* Adjust as needed */
+    overflow-y: auto; /* Enable scrolling for messages */
+    background-color: #f8f9fa; /* Light background for the window */
+    display: flex; /* Use flexbox to push new messages down */
+    flex-direction: column; /* Stack messages vertically */
+}
+
+.chat-message {
+    margin-bottom: 1rem; /* Space between messages */
+    display: flex; /* Use flexbox for alignment */
+}
+
+.ai-message {
+    justify-content: flex-start; /* Align AI messages to the left */
+    margin-right: 20%; /* Give AI messages some breathing room on right */
+}
+
+.user-message {
+    justify-content: flex-end; /* Align user messages to the right */
+     margin-left: 20%; /* Give User messages some breathing room on left */
+}
+
+.message-bubble {
+    padding: 0.6rem 1rem; /* Padding inside the bubble */
+    border-radius: 1rem; /* Rounded corners */
+    max-width: 100%; /* Prevent bubbles from becoming too wide */
+    word-wrap: break-word; /* Wrap long words */
+}
+
+/* Specific Bubble Styles - Match HTML classes */
+.ai-message .message-bubble {
+    background-color: #e9ecef; /* Bootstrap light grey */
+    color: #212529; /* Bootstrap dark text */
+    border: 1px solid #dee2e6; /* Subtle border */
+     border-top-left-radius: 0.25rem; /* Make AI bubble less rounded on top-left */
+}
+
+.user-message .message-bubble {
+    background-color: #0d6efd; /* Bootstrap primary blue */
+    color: white;
+    border-top-right-radius: 0.25rem; /* Make user bubble less rounded on top-right */
+}
+
+/* Style for chat input area */
+#chatInput {
+    resize: none; /* Prevent manual resizing of textarea */
+}
