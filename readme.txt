@@ -44,3 +44,6 @@ git push origin main
 (Or just git push).
 
 Handling Conflicts: If both of you edit the same lines in the same file before pulling, Git might detect a "merge conflict" when you git pull. VS Code has tools to help resolve these. The key is frequent communication and pulling changes often!
+
+
+Need to add images to image section
