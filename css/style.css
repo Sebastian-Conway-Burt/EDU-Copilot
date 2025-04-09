@@ -37,3 +37,7 @@ body {
 .card-body {
     flex-grow: 1; /* Allows button to stick to bottom */
 }
+
+.border-dashed {
+    border: 2px dashed #ccc; /* Example style */
+}
