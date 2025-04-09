@@ -1,0 +1,39 @@
+/* Add custom styles to override Bootstrap or add new elements */
+
+body {
+    /* Example: Set a default font */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Example: Custom color for Milestone button if needed */
+.text-purple {
+    color: #6f42c1; /* Bootstrap purple example */
+}
+
+.btn-custom-purple {
+    color: #fff;
+    background-color: #6f42c1;
+    border-color: #6f42c1;
+}
+
+.btn-custom-purple:hover {
+    color: #fff;
+    background-color: #5a349b;
+    border-color: #533090;
+}
+
+
+/* Add more styles as needed */
+.navbar-brand i {
+     color: #ffc107; /* Example: Make brain icon yellow */
+}
+
+/* Ensure cards in a row try to maintain similar height */
+.row.g-4 > .col > .card {
+    display: flex;
+    flex-direction: column;
+}
+
+.card-body {
+    flex-grow: 1; /* Allows button to stick to bottom */
+}
