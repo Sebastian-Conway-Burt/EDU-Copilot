@@ -1,443 +1,195 @@
-/* --- Typography & Basic Styles --- */
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Nunito+Sans:wght@400;600;700&display=swap');
-
+/* --- Global Color Scheme & Variables --- */
 :root {
-  /* Define CSS Variables for Colors */
-  --bs-primary-rgb: 0, 90, 156; /* #005A9C */
-  --bs-secondary-rgb: 108, 117, 125; /* #6c757d */
-  --bs-warning-rgb: 245, 124, 0; /* #F57C00 - Override Bootstrap Warning for Accent */
-  --ea-accent-rgb: 245, 124, 0; /* Explicit Accent Color */
-  --ea-text-dark: #343a40;
-  --ea-text-medium: #6c757d;
-  --ea-border-light: #dee2e6;
-  --ea-bg-light: #f8f9fa;
+  --ea-primary-blue: #1A3A6D; /* Main Navy Blue from Logo */
+  --ea-primary-blue-hover: #244D8A; /* Slightly Lighter Blue for Hover */
+  --ea-primary-blue-darker: #132B4F; /* Darker Blue for Active States */
+  --ea-warning-yellow: #ffc107; /* Keep Bootstrap Yellow for Premium */
+  --ea-light-grey: #f8f9fa; /* Standard Light Grey Background */
+  --ea-dark-text: #212529; /* Standard Dark Text */
+  --ea-light-text: #f8f9fa; /* Light text for dark backgrounds */
+  --ea-grey-text: #6c757d; /* Muted grey text */
 
-  /* Override Bootstrap's default font variables */
-  --bs-body-font-family: 'Nunito Sans', sans-serif;
-  --bs-heading-font-family: 'Montserrat', sans-serif;
-  --bs-body-font-size: 1rem; /* Base size (usually 16px) */
-  --bs-body-line-height: 1.6;
-  --bs-body-color: var(--ea-text-dark);
+  /* Keep Bootstrap default functional colors (or override if needed) */
+  --bs-success: #198754;
+  --bs-info: #0dcaf0;
+  --bs-danger: #dc3545;
+  --bs-secondary: #6c757d;
+  --bs-light: #f8f9fa;
+  --bs-dark: #212529;
 }
 
-/* Apply heading font */
-h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
-  font-family: var(--bs-heading-font-family);
-  font-weight: 700; /* Bolder headings */
-  color: var(--ea-text-dark);
-  margin-top: 1.5rem; /* Add space above headings */
-  margin-bottom: 1rem;
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: var(--ea-dark-text);
 }
 
-/* Define Hierarchy (adjust sizes as needed) */
-h1, .h1 { font-size: calc(1.375rem + 1.5vw); font-weight: 700;} /* ~38px on medium screens */
-h2, .h2 { font-size: calc(1.3rem + 0.6vw); font-weight: 700;} /* ~30px */
-h3, .h3 { font-size: calc(1.25rem + 0.3vw); font-weight: 600;} /* ~24px, slightly less bold */
-h4, .h4 { font-size: 1.15rem; font-weight: 600; } /* ~18px */
-h5, .h5 { font-size: 1.05rem; font-weight: 600; } /* ~17px */
-h6, .h6 { font-size: 1rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; color: var(--ea-text-medium);} /* Sub-section headers */
-
-p {
-  margin-bottom: 1rem;
-  color: var(--bs-body-color);
+/* --- Navbar Styling --- */
+/* Override Bootstrap's bg-dark */
+.navbar-dark.bg-dark {
+  background-color: var(--ea-primary-blue) !important; /* Force override */
 }
 
-a {
-  color: rgb(var(--bs-primary-rgb)); /* Use primary color variable */
-  text-decoration: none; /* Remove default underline */
-  transition: color 0.2s ease;
+/* Ensure text is light on the new navbar */
+.navbar-dark .navbar-brand,
+.navbar-dark .nav-link {
+  color: rgba(255, 255, 255, 0.9); /* Slightly less bright white */
+}
+
+.navbar-dark .nav-link:hover,
+.navbar-dark .navbar-brand:hover {
+  color: #ffffff; /* Pure white on hover */
+}
+
+.navbar-dark .nav-link.active {
+  color: #ffffff;
+  font-weight: bold;
+}
+
+/* Style the navbar brain icon if desired */
+.navbar-brand i.fa-brain {
+   color: var(--ea-warning-yellow); /* Keep yellow icon */
+   /* Or use white: color: #ffffff; */
+}
+
+/* --- Button Styling --- */
+.btn-primary {
+  background-color: var(--ea-primary-blue);
+  border-color: var(--ea-primary-blue);
+  color: #ffffff;
+}
+
+.btn-primary:hover {
+  background-color: var(--ea-primary-blue-hover);
+  border-color: var(--ea-primary-blue-hover);
+  color: #ffffff;
+}
+
+.btn-primary:active,
+.btn-primary:focus {
+   background-color: var(--ea-primary-blue-darker) !important; /* Ensure active state */
+   border-color: var(--ea-primary-blue-darker) !important;
+   color: #ffffff !important;
+   box-shadow: 0 0 0 0.25rem rgba(26, 58, 109, 0.5) !important; /* Focus ring matching blue */
+}
+
+/* Keep warning button style */
+.btn-warning {
+  background-color: var(--ea-warning-yellow);
+  border-color: var(--ea-warning-yellow);
+  color: var(--ea-dark-text); /* Dark text on yellow */
+}
+.btn-warning:hover {
+   background-color: #ffca2c; /* Slightly lighter yellow */
+   border-color: #ffc720;
+   color: var(--ea-dark-text);
+}
+
+/* Outline Buttons */
+.btn-outline-primary {
+  color: var(--ea-primary-blue);
+  border-color: var(--ea-primary-blue);
+}
+.btn-outline-primary:hover {
+  background-color: var(--ea-primary-blue);
+  border-color: var(--ea-primary-blue);
+  color: #ffffff;
+}
+
+/* --- Footer Styling --- */
+footer.bg-dark {
+   background-color: var(--ea-primary-blue-darker) !important; /* Darker blue for footer */
+   /* Or use a dark grey: background-color: #343a40 !important; */
+}
+
+footer .text-white-50 {
+  color: rgba(255, 255, 255, 0.6) !important; /* Adjust footer link opacity */
+}
+footer a.text-white-50:hover {
+   color: rgba(255, 255, 255, 0.8) !important;
+}
+
+/* --- General Element Styling --- */
+a { /* Default link color */
+  color: var(--ea-primary-blue-hover);
+  text-decoration: none;
 }
 a:hover {
-  color: rgb(var(--bs-primary-rgb), 0.8); /* Slightly lighter/desaturated on hover */
+  color: var(--ea-primary-blue-darker);
   text-decoration: underline;
 }
 
-small, .small {
-  font-size: 0.875em;
-  color: var(--ea-text-medium);
-}
-/* --- Modern Component Styles --- */
-
-/* Buttons */
-.btn {
-    padding: 0.6rem 1.2rem; /* Slightly more padding */
-    border-radius: 0.375rem; /* Standard rounding */
-    font-weight: 600;
-    letter-spacing: 0.5px;
-    text-transform: uppercase; /* Uppercase button text */
-    font-size: 0.85rem;
-    transition: all 0.2s ease-in-out;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-  }
-  
-  .btn:hover {
-    transform: translateY(-1px); /* Subtle lift */
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  }
-  
-  /* Primary Button */
-  .btn-primary {
-    background-color: rgb(var(--bs-primary-rgb));
-    border-color: rgb(var(--bs-primary-rgb));
-  }
-  .btn-primary:hover {
-     background-color: rgba(var(--bs-primary-rgb), 0.85);
-     border-color: rgba(var(--bs-primary-rgb), 0.85);
-  }
-  
-  /* Secondary Button (Outline) */
-  .btn-outline-primary {
-    color: rgb(var(--bs-primary-rgb));
-    border-color: rgb(var(--bs-primary-rgb));
-  }
-  .btn-outline-primary:hover {
-     background-color: rgba(var(--bs-primary-rgb), 0.1); /* Subtle background on hover */
-     color: rgb(var(--bs-primary-rgb));
-     border-color: rgb(var(--bs-primary-rgb));
-  }
-  
-  /* Warning/Accent Button (Premium) */
-  .btn-warning { /* Overriding Bootstrap Warning with our Accent */
-    background-color: rgb(var(--ea-accent-rgb));
-    border-color: rgb(var(--ea-accent-rgb));
-    color: white; /* Ensure text contrast */
-  }
-  .btn-warning:hover {
-    background-color: rgba(var(--ea-accent-rgb), 0.85);
-    border-color: rgba(var(--ea-accent-rgb), 0.85);
-    color: white;
-  }
-  .btn-outline-warning {
-     color: rgb(var(--ea-accent-rgb));
-     border-color: rgb(var(--ea-accent-rgb));
-  }
-  .btn-outline-warning:hover {
-     background-color: rgba(var(--ea-accent-rgb), 0.1);
-     color: rgb(var(--ea-accent-rgb));
-     border-color: rgb(var(--ea-accent-rgb));
-  }
-  
-  
-  /* Cards */
-  .card {
-    border: 1px solid var(--ea-border-light); /* Use light border */
-    /* remove default border if using shadow only */
-    /* border: none; */
-    border-radius: 0.5rem; /* Slightly more rounding */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05); /* Subtle shadow */
-    transition: box-shadow 0.3s ease, transform 0.3s ease;
-  }
-  
-  .card-header {
-    background-color: transparent; /* Cleaner look */
-    border-bottom: 1px solid var(--ea-border-light);
-    padding: 0.75rem 1.25rem;
-    font-weight: 600; /* Make headers slightly bolder */
-  }
-  
-  .card-footer {
-    background-color: transparent;
-    border-top: 1px solid var(--ea-border-light);
-     padding: 0.75rem 1.25rem;
-  }
-  
-  .card-body {
-      padding: 1.25rem; /* Ensure consistent padding */
-  }
-  
-  
-  /* Forms (Visuals Only - controls are disabled in demo) */
-  .form-control, .form-select {
-    border-radius: 0.375rem;
-    border: 1px solid var(--ea-border-light);
-    padding: 0.5rem 0.9rem; /* Adjust padding */
-    transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-  }
-  
-  .form-control:focus, .form-select:focus {
-    border-color: rgba(var(--bs-primary-rgb), 0.5); /* Primary color border on focus */
-    box-shadow: 0 0 0 0.25rem rgba(var(--bs-primary-rgb), 0.25); /* Bootstrap's default focus shadow, using primary color */
-    background-color: #fff; /* Ensure background stays white on focus */
-  }
-  
-  .form-control::placeholder { /* Style placeholder text */
-    color: var(--ea-text-medium);
-    opacity: 0.7;
-  }
-  
-  .form-label {
-    font-weight: 600;
-    margin-bottom: 0.5rem;
-    font-size: 0.9em;
-  }
-  
-  /* Ensure disabled state is clear */
-  .form-control:disabled, .form-select:disabled, .btn:disabled {
-     background-color: var(--ea-bg-light);
-     opacity: 0.7;
-     cursor: not-allowed;
-  }
-  
-  /* --- End Modern Component Styles --- */
-/* Add custom styles to override Bootstrap or add new elements */
-
-body {
-    /* Example: Set a default font */
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+/* Header Background (Example) */
+header.bg-light {
+  background-color: var(--ea-light-grey) !important; /* Keep light background */
 }
 
-/* Example: Custom color for Milestone button if needed */
-.text-purple {
-    color: #6f42c1; /* Bootstrap purple example */
-}
+/* --- Component Specific Styles (Review & Adjust if needed) --- */
 
-.btn-custom-purple {
-    color: #fff;
-    background-color: #6f42c1;
-    border-color: #6f42c1;
-}
-
-.btn-custom-purple:hover {
-    color: #fff;
-    background-color: #5a349b;
-    border-color: #533090;
-}
-
-
-/* Add more styles as needed */
-.navbar-brand i {
-     color: #ffc107; /* Example: Make brain icon yellow */
-}
-
-/* Ensure cards in a row try to maintain similar height */
-.row.g-4 > .col > .card {
-    display: flex;
-    flex-direction: column;
-}
-
-.card-body {
-    flex-grow: 1; /* Allows button to stick to bottom */
-}
-
-.border-dashed {
-    border: 2px dashed #ccc; /* Example style */
-}
-/* Chat Window Styling */
-#chat-window {
-    height: 400px; /* Adjust as needed */
-    overflow-y: auto; /* Enable scrolling for messages */
-    background-color: #f8f9fa; /* Light background for the window */
-    display: flex; /* Use flexbox to push new messages down */
-    flex-direction: column; /* Stack messages vertically */
-}
-
-.chat-message {
-    margin-bottom: 1rem; /* Space between messages */
-    display: flex; /* Use flexbox for alignment */
-}
-
-.ai-message {
-    justify-content: flex-start; /* Align AI messages to the left */
-    margin-right: 20%; /* Give AI messages some breathing room on right */
-}
-
-.user-message {
-    justify-content: flex-end; /* Align user messages to the right */
-     margin-left: 20%; /* Give User messages some breathing room on left */
-}
-
-.message-bubble {
-    padding: 0.6rem 1rem; /* Padding inside the bubble */
-    border-radius: 1rem; /* Rounded corners */
-    max-width: 100%; /* Prevent bubbles from becoming too wide */
-    word-wrap: break-word; /* Wrap long words */
-}
-
-/* Specific Bubble Styles - Match HTML classes */
-.ai-message .message-bubble {
-    background-color: #e9ecef; /* Bootstrap light grey */
-    color: #212529; /* Bootstrap dark text */
-    border: 1px solid #dee2e6; /* Subtle border */
-     border-top-left-radius: 0.25rem; /* Make AI bubble less rounded on top-left */
-}
-
+/* Chat Window - Update User Bubble Color */
 .user-message .message-bubble {
-    background-color: #0d6efd; /* Bootstrap primary blue */
-    color: white;
-    border-top-right-radius: 0.25rem; /* Make user bubble less rounded on top-right */
+  background-color: var(--ea-primary-blue); /* Use new primary blue */
+  color: white;
+  border-top-right-radius: 0.25rem;
 }
-
-/* Style for chat input area */
-#chatInput {
-    resize: none; /* Prevent manual resizing of textarea */
+/* Keep AI bubble light */
+.ai-message .message-bubble {
+  background-color: #e9ecef;
+  color: var(--ea-dark-text);
+  border: 1px solid #dee2e6;
+  border-top-left-radius: 0.25rem;
 }
-/* --- Milestone Roadmap Styles --- */
-
-#milestone-roadmap-container {
-    overflow-x: auto; /* Enable horizontal scrolling */
-    padding: 20px 10px 20px 10px; /* Add padding inside */
-    background-color: #f8f9fa; /* Light background */
-    border: 1px solid #dee2e6;
-    border-radius: 0.375rem;
-    position: relative; /* Needed for the timeline axis */
+#chat-window { /* Ensure chat window style is defined */
+  height: 400px;
+  overflow-y: auto;
+  background-color: #ffffff; /* Can use white or light grey */
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #dee2e6; /* Add border back if removed */
+  border-radius: 0.375rem;
 }
+.chat-message { margin-bottom: 1rem; display: flex;}
+.ai-message { justify-content: flex-start; margin-right: 20%;}
+.user-message { justify-content: flex-end; margin-left: 20%;}
+.message-bubble { padding: 0.6rem 1rem; border-radius: 1rem; max-width: 100%; word-wrap: break-word;}
+#chatInput { resize: none; }
 
-#milestone-timeline {
-    display: flex; /* Lay out time segments horizontally */
-    min-width: 1500px; /* Increased min-width for more space */
-    position: relative; /* For positioning elements relative to the timeline */
-    padding-top: 30px; /* Add space above for segment headers */
-    padding-bottom: 30px; /* Add space below */
-}
 
-/* Timeline Axis (Horizontal Line) - Improved Positioning */
-#milestone-timeline::before {
-    content: '';
-    position: absolute;
-    left: 40px; /* Start line slightly inset */
-    right: 40px; /* End line slightly inset */
-    top: calc(50% + 15px); /* Position line slightly lower than vertical center (adjust based on marker heights) */
-    height: 5px; /* Make line thicker */
-    background-color: #ced4da; /* Slightly darker grey */
-    border-radius: 3px; /* Rounded ends */
-    z-index: 1;
-    margin-top: -2.5px; /* Center vertically */
-}
-
-.time-segment {
-    flex: 1; /* Each segment takes space */
-    padding: 0 15px; /* Padding left/right within segment */
-    min-width: 280px; /* Slightly wider segments */
-    position: relative; /* Needed for markers */
-    z-index: 2; /* Keep segments above the axis line */
-    text-align: center;
-    /* Add a subtle visual separator between segments if desired */
-    /* border-right: 1px dashed #e0e0e0; */
-}
-/* Remove border from the last segment */
-/* .time-segment:last-child {
-    border-right: none;
-} */
-
-.time-segment h5 { /* Header for the time segment */
-    position: absolute; /* Position header above the markers */
-    top: -10px; /* Adjust position above */
-    left: 0;
-    right: 0;
-    font-weight: bold;
-    color: #495057; /* Darker grey */
-    font-size: 0.9em;
-    text-transform: uppercase; /* Make headers stand out */
-    letter-spacing: 0.5px;
-}
-
-.milestone-marker {
-    background-color: white;
-    border: 1px solid #dee2e6; /* Standard border */
-    border-left-width: 5px; /* Make category border thicker */
-    border-radius: 0.375rem;
-    padding: 0.6rem 0.8rem; /* Adjust padding */
-    margin-bottom: 1rem; /* Increase space between markers */
-    box-shadow: 0 2px 5px rgba(0,0,0,0.08); /* Slightly stronger shadow */
-    font-size: 0.875em; /* Slightly larger text */
-    text-align: left;
-    position: relative; /* Keep relative positioning */
-    width: 95%; /* Adjust width */
-    margin-left: auto;
-    margin-right: auto;
-    transition: transform 0.2s ease-in-out; /* Add hover effect */
-}
-
-.milestone-marker:hover {
-    transform: translateY(-2px); /* Slight lift on hover */
-    box-shadow: 0 4px 8px rgba(0,0,0,0.12);
-}
-
-/* Category Colors (using border-left) - Keep as before */
+/* Milestone Roadmap - Keep category colors distinct */
 .milestone-marker.academic { border-left-color: #0d6efd; } /* Blue */
 .milestone-marker.skill { border-left-color: #198754; } /* Green */
 .milestone-marker.career { border-left-color: #dc3545; } /* Red */
-.milestone-marker.scholarship { border-left-color: #ffc107; } /* Yellow */
+.milestone-marker.scholarship { border-left-color: var(--ea-warning-yellow); } /* Match premium yellow */
 .milestone-marker.personal { border-left-color: #6f42c1; } /* Purple */
 
-.milestone-marker i {
-    margin-right: 0.6em;
-    width: 1.1em; /* Ensure icons align better */
-    text-align: center;
-    opacity: 0.8;
-}
-/* Match icon color to border */
+/* Match icons to border colors */
 .milestone-marker.academic i { color: #0d6efd; }
 .milestone-marker.skill i { color: #198754; }
 .milestone-marker.career i { color: #dc3545; }
-.milestone-marker.scholarship i { color: #ffc107; }
+.milestone-marker.scholarship i { color: var(--ea-warning-yellow); }
 .milestone-marker.personal i { color: #6f42c1; }
 
+/* Ensure other Milestone styles from previous step are included */
+#milestone-roadmap-container { /* ...styles... */ overflow-x: auto; padding: 20px 10px; background-color: var(--ea-light-grey); border: 1px solid #dee2e6; border-radius: 0.375rem; position: relative; }
+#milestone-timeline { /* ...styles... */ display: flex; min-width: 1500px; position: relative; padding-top: 30px; padding-bottom: 30px; }
+#milestone-timeline::before { /* ...styles... */ content: ''; position: absolute; left: 40px; right: 40px; top: calc(50% + 15px); height: 5px; background-color: #ced4da; border-radius: 3px; z-index: 1; margin-top: -2.5px; }
+.time-segment { /* ...styles... */ flex: 1; padding: 0 15px; min-width: 280px; position: relative; z-index: 2; text-align: center; }
+.time-segment h5 { /* ...styles... */ position: absolute; top: -10px; left: 0; right: 0; font-weight: bold; color: #495057; font-size: 0.9em; text-transform: uppercase; letter-spacing: 0.5px; }
+.milestone-marker { /* ...styles... */ background-color: white; border: 1px solid #dee2e6; border-left-width: 5px; border-radius: 0.375rem; padding: 0.6rem 0.8rem; margin-bottom: 1rem; box-shadow: 0 2px 5px rgba(0,0,0,0.08); font-size: 0.875em; text-align: left; position: relative; width: 95%; margin-left: auto; margin-right: auto; transition: transform 0.2s ease-in-out; }
+.milestone-marker:hover { /* ...styles... */ transform: translateY(-2px); box-shadow: 0 4px 8px rgba(0,0,0,0.12); }
+.milestone-marker i { /* ...styles... */ margin-right: 0.6em; width: 1.1em; text-align: center; opacity: 0.8; }
 
-/* --- Achievement Badge Styles --- */
+/* Achievement Badges - Ensure styles are included */
+.badge-container { /* ...styles... */ margin-bottom: 1.5rem; text-align: center; }
+.milestone-badge { /* ...styles... */ display: inline-block; width: 85px; height: 85px; border-radius: 50%; background-color: #e9ecef; color: #adb5bd; display: flex; align-items: center; justify-content: center; margin: 0 auto 8px auto; border: 4px solid #ced4da; transition: all 0.3s ease; box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1); }
+.milestone-badge i { /* ...styles... */ font-size: 2em; line-height: 1; }
+.milestone-badge.earned { /* ...styles... */ background-color: var(--bs-success); color: white; border-color: #146c43; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15); } /* Use Bootstrap success green */
+.milestone-badge.locked { /* ...styles... */ opacity: 0.6; filter: grayscale(80%); cursor: help; }
+.badge-container span { /* ...styles... */ font-size: 0.85em; font-weight: 600; color: var(--ea-grey-text); display: block; margin-top: 0.25rem; }
+.badge-container .earned span { /* ...styles... */ color: var(--bs-success); }
 
-.badge-container {
-    margin-bottom: 1.5rem; /* More space below badges */
-    text-align: center;
-}
 
-.milestone-badge {
-    display: inline-block;
-    width: 85px; /* Slightly larger */
-    height: 85px;
-    border-radius: 50%; /* Keep circular */
-    background-color: #e9ecef; /* Default background */
-    color: #adb5bd; /* Lighter icon color for locked */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto 8px auto; /* Center horizontally */
-    border: 4px solid #ced4da; /* Thicker border */
-    transition: all 0.3s ease;
-    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1); /* Subtle inner shadow */
-}
-
-.milestone-badge i {
-    font-size: 2em; /* Slightly larger icon */
-    line-height: 1; /* Ensure icon is centered */
-}
-
-.milestone-badge.earned {
-    background-color: #198754; /* Keep earned green */
-    color: white;
-    border-color: #146c43; /* Darker green border */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15); /* Add subtle shadow to earned */
-}
-
-.milestone-badge.locked {
-    opacity: 0.6; /* Keep opacity */
-    filter: grayscale(80%); /* Add grayscale filter for locked */
-    cursor: help; /* Keep help cursor */
-}
-
-.badge-container span { /* Title below badge */
-    font-size: 0.85em;
-    font-weight: 600; /* Slightly bolder */
-    color: #495057; /* Darker grey text */
-    display: block; /* Ensure it takes full width for centering */
-    margin-top: 0.25rem;
-}
-
-/* --- Ensure other custom styles are present --- */
-/* Add .text-purple or other custom classes if used elsewhere */
-.text-purple {
-    color: #6f42c1;
-}
-.btn-custom-purple {
-    color: #fff;
-    background-color: #6f42c1;
-    border-color: #6f42c1;
-}
-.btn-custom-purple:hover {
-    color: #fff;
-    background-color: #5a349b;
-    border-color: #533090;
-}
-.border-dashed {
-    border: 2px dashed #ccc;
-}
+/* --- Utility Classes (Keep or Add as needed) --- */
+.text-purple { color: #6f42c1; }
+.btn-custom-purple { color: #fff; background-color: #6f42c1; border-color: #6f42c1; }
+.btn-custom-purple:hover { color: #fff; background-color: #5a349b; border-color: #533090; }
+.border-dashed { border: 2px dashed #ccc; }
