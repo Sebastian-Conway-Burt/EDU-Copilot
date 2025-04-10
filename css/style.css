@@ -193,3 +193,23 @@ header.bg-light {
 .btn-custom-purple { color: #fff; background-color: #6f42c1; border-color: #6f42c1; }
 .btn-custom-purple:hover { color: #fff; background-color: #5a349b; border-color: #533090; }
 .border-dashed { border: 2px dashed #ccc; }
+
+/* --- Navbar Logo Styling --- */
+.navbar-brand img.navbar-logo {
+  height: 35px; /* <--- Adjust this height as needed to fit your navbar */
+  width: auto; /* Maintain aspect ratio */
+  vertical-align: middle; /* Helps align the logo nicely */
+}
+
+/* Optional: Adjust padding if logo looks too close to top/bottom */
+.navbar-brand {
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+}
+
+/* Optional: Style for text next to logo if you uncommented it */
+/*
+.navbar-brand span {
+  vertical-align: middle;
+}
+*/
